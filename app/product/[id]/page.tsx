@@ -1,5 +1,5 @@
-import { getPhoneById } from '@/app/api/search/route';
 import PhoneDetails from '@/app/components/PhoneDetails/PhoneDetails';
+import { getPhoneById } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
 
 export default async function ProductPage({

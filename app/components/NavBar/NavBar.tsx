@@ -1,30 +1,12 @@
 'use client';
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './NavBar.module.css';
+import useCartStore from '@/app/store/cartStore';
 
 const NavBar = () => {
-    const [totalItems, setTotalItems] = useState(0);
-
-    useEffect(() => {
-        const cartCookie = document.cookie
-            .split('; ')
-            .find(row => row.startsWith('cart='));
-
-        if (cartCookie) {
-            const cart = JSON.parse(
-                decodeURIComponent(cartCookie.split('=')[1])
-            );
-            const total = cart.reduce(
-                (sum: number, item: any) => sum + item.quantity,
-                0
-            );
-            setTotalItems(total);
-        }
-    }, []);
-
+    const cartCount = useCartStore((state: any) => state.cart.length);
     return (
         <nav className={styles.navbar}>
             <Link href="/">
@@ -45,7 +27,7 @@ const NavBar = () => {
                     height={16}
                     className={styles.cart}
                 />
-                {totalItems}
+                <span className={styles.cartCount}>{cartCount}</span>
             </Link>
         </nav>
     );

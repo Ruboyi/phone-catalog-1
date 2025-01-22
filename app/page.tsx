@@ -1,6 +1,7 @@
+import { getPhones } from './api/phones/route';
 import PhoneCard from './components/PhoneCard/PhoneCard';
 import SearchBar from './components/SearchBar/SearchBar';
-import { getPhones } from './lib/data';
+
 import { Phone } from './lib/definitons';
 import styles from './page.module.css';
 import { Metadata } from 'next';

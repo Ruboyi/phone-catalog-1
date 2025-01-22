@@ -1,10 +1,23 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
 import styles from './PhoneCard.module.css';
+import { Phone } from '@/app/lib/definitons';
+import { useRouter } from 'next/navigation';
 
-const PhoneCard = ({ phone }) => {
+interface PhoneCardProps {
+    phone: Phone;
+}
+
+const PhoneCard: React.FC<PhoneCardProps> = ({ phone }) => {
+    const router = useRouter(); // Hook para navegación
+
+    const handleCardClick = () => {
+        router.push(`/product/${phone.id}`);
+    };
+
     return (
-        <div className={styles.phoneCard}>
+        <div className={styles.phoneCard} onClick={handleCardClick}>
             <section className={styles.phoneImage}>
                 <Image
                     src={phone.imageUrl}

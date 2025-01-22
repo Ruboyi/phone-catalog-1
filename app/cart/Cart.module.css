@@ -1,0 +1,67 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 200px);
+}
+
+.content {
+    flex: 1;
+}
+
+.buttonContainer {
+    background-color: white;
+
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.totalAndPay {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.total {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+
+    white-space: nowrap;
+}
+
+.continueButton {
+    margin-right: auto;
+}
+
+.payButton {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .buttonContainer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .total {
+        margin: 0 0 16px 0;
+        text-align: left;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .continueButton {
+        margin-right: 0;
+    }
+
+    .payButton {
+        margin-left: 0;
+    }
+}

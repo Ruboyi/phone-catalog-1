@@ -5,6 +5,7 @@ import { PhoneDetail } from '@/app/lib/definitons';
 import styles from './PhoneDetails.module.css';
 import Image from 'next/image';
 import { useState } from 'react';
+import Button from '../Button/Button';
 
 interface PhoneDetailsProps {
     phone: PhoneDetail;
@@ -122,13 +123,9 @@ const PhoneDetails: React.FC<PhoneDetailsProps> = ({ phone }) => {
                         {selectedColor.name}
                     </p>
 
-                    <button
-                        className={styles.addToCartButton}
-                        onClick={handleAddToCart}
-                        disabled={isInCart}
-                    >
+                    <Button onClick={handleAddToCart} disabled={isInCart}>
                         Añadir
-                    </button>
+                    </Button>
                 </div>
             </div>
             <div className={styles.specifications}>

@@ -1,8 +1,12 @@
 import api from '@/app/lib/axios.instance';
 import { Phone, PhoneDetail } from '@/app/lib/definitons';
 
-export const getPhones = async (): Promise<Phone[]> => {
-    const response = await api.get('/products');
+export const getPhones = async (searchValue: string): Promise<Phone[]> => {
+    const response = await api.get('/products', {
+        params: {
+            search: searchValue,
+        },
+    });
     // Remove duplicates
     const phones = response.data.filter(
         (phone: Phone, index: number, self: Phone[]) =>

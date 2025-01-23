@@ -4,11 +4,17 @@ import useCartStore from '../store/cartStore';
 import CartCard from '../components/CartCard/CartCard';
 import Button from '../components/Button/Button';
 import styles from './Cart.module.css';
+import { useRouter } from 'next/navigation';
 
 const Cart = () => {
+    const router = useRouter();
     const phonesCart = useCartStore((state: any) => state.cart);
 
     const total = phonesCart.reduce((acc, phone) => acc + phone.price, 0);
+
+    const handleGoHome = () => {
+        router.push('/');
+    };
 
     return (
         <main className={styles.main}>
@@ -19,7 +25,11 @@ const Cart = () => {
                 ))}
             </section>
             <footer className={styles.buttonContainer}>
-                <Button outline className={styles.continueButton}>
+                <Button
+                    outline
+                    className={styles.continueButton}
+                    onClick={handleGoHome}
+                >
                     Continue shopping
                 </Button>
                 {phonesCart.length > 0 && (

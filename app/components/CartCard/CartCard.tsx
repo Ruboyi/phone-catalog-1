@@ -7,7 +7,11 @@ const CartCard = ({ phone }) => {
     const deleteCard = useCartStore((state: any) => state.removeFromCart);
 
     return (
-        <div className={styles.container} key={phone.id}>
+        <div
+            className={styles.container}
+            key={phone.id}
+            data-testid="cart-item"
+        >
             <div className={styles.imageContainer}>
                 <Image
                     src={phone.imageUrl}

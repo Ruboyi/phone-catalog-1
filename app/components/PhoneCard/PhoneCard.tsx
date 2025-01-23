@@ -17,7 +17,11 @@ const PhoneCard: React.FC<PhoneCardProps> = ({ phone }) => {
     };
 
     return (
-        <div className={styles.phoneCard} onClick={handleCardClick}>
+        <div
+            className={styles.phoneCard}
+            onClick={handleCardClick}
+            data-testid="phone-card"
+        >
             <section className={styles.phoneImage}>
                 <Image
                     src={phone.imageUrl}

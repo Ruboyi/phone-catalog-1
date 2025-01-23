@@ -26,7 +26,7 @@ export default function SearchBar({ searchCount }) {
         <div className={styles.searchBarContainer}>
             <input
                 onChange={event => handleSearch(event.target.value)}
-                type="text"
+                type="search"
                 name="search"
                 placeholder="Search for a smartphone..."
                 autoComplete="off"

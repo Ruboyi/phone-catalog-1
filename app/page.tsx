@@ -10,10 +10,13 @@ export default async function Home({
 }: {
     searchParams?: { [key: string]: string | string[] | undefined };
 }) {
+    // Asegúrate de manejar adecuadamente los tipos de `query`
     const searchValue =
-        (await searchParams)?.query?.toString().toLocaleLowerCase().trim() ||
-        '';
+        typeof searchParams?.query === 'string'
+            ? searchParams.query.toLowerCase().trim()
+            : '';
 
+    // Obtén los datos filtrados
     const phones = await getPhones(searchValue);
 
     return (

@@ -3,11 +3,7 @@ import { getPhoneById } from '@/app/lib/data';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-export async function generateMetadata({
-    params,
-}: {
-    params: { id: string };
-}): Promise<Metadata> {
+export async function generateMetadata({ params }): Promise<Metadata> {
     const id = (await params)?.id.toString();
     const product = await getPhoneById(id);
 
@@ -24,11 +20,7 @@ export async function generateMetadata({
     };
 }
 
-export default async function ProductPage({
-    params,
-}: {
-    params: { id: string };
-}) {
+export default async function ProductPage({ params }) {
     const id = (await params)?.id.toString();
     const product = await getPhoneById(id);
 

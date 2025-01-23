@@ -5,18 +5,11 @@ import { getPhones } from './lib/data';
 import { Phone } from './lib/definitons';
 import styles from './page.module.css';
 
-export default async function Home({
-    searchParams,
-}: {
-    searchParams?: { [key: string]: string | string[] | undefined };
-}) {
-    // Asegúrate de manejar adecuadamente los tipos de `query`
+export default async function Home({ searchParams }) {
     const searchValue =
-        typeof searchParams?.query === 'string'
-            ? searchParams.query.toLowerCase().trim()
-            : '';
+        (await searchParams)?.query?.toString().toLocaleLowerCase().trim() ||
+        '';
 
-    // Obtén los datos filtrados
     const phones = await getPhones(searchValue);
 
     return (

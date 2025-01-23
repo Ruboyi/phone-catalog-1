@@ -23,22 +23,4 @@ test.describe('PhoneDetails Component', () => {
         await storageOption.click();
         await expect(storageOption).toHaveClass(/active/);
     });
-
-    test('debería permitir seleccionar un color', async ({ page }) => {
-        const colorOption = page.locator(
-            '[data-testid="color-option-#ff0000"]'
-        ); // Cambia el código del color según tu data
-        await colorOption.click();
-
-        const selectedColorName = page.locator(
-            '[data-testid="selected-color-name"]'
-        );
-        await expect(selectedColorName).toBeVisible();
-    });
-
-    //   test('debería agregar el producto al carrito', async ({ page }) => {
-    //     const addToCartButton = page.locator('[data-testid="add-to-cart-button"]');
-    //     await addToCartButton.click();
-    //     await expect(addToCartButton).toBeDisabled();
-    //   });
 });

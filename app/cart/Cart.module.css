@@ -21,6 +21,7 @@
 .totalAndPay {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 16px;
 }
 
@@ -34,6 +35,14 @@
 
 .continueButton {
     margin-right: auto;
+    /* en texto en un linea  */
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.totalMin {
+    display: flex;
+    justify-content: space-between;
 }
 
 .payButton {
@@ -59,9 +68,14 @@
 
     .continueButton {
         margin-right: 0;
+        font-size: 12px;
+        width: 50%;
     }
 
     .payButton {
         margin-left: 0;
+        width: 50%;
+        font-size: 12px;
+        min-width: 0;
     }
 }

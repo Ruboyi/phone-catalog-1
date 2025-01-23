@@ -15,10 +15,12 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
+            <head>
+                <link rel="icon" href="/favicon.svg" />
+            </head>
             <body>
                 <div className="main-container">
                     <NavBar />
-
                     {children}
                 </div>
             </body>

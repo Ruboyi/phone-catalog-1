@@ -5,19 +5,19 @@ const isProduction = process.env.NODE_ENV === 'production';
 const nextConfig: NextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['prueba-tecnica-api-tienda-moviles.onrender.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'prueba-tecnica-api-tienda-moviles.onrender.com',
+                pathname: '/**',
+            },
+            {
+                protocol: 'http',
+                hostname: 'prueba-tecnica-api-tienda-moviles.onrender.com',
+                pathname: '/**',
+            },
+        ],
     },
-    // webpack(config) {
-    //     if (!isProduction) {
-    //         config.optimization.minimize = false;
-    //     } else {
-    //         config.optimization.splitChunks = {
-    //             chunks: 'all',
-    //         };
-    //     }
-
-    //     return config;
-    // },
 };
 
 export default nextConfig;

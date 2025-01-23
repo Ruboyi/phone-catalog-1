@@ -12,6 +12,7 @@ export const getPhones = async (searchValue: string): Promise<Phone[]> => {
         (phone: Phone, index: number, self: Phone[]) =>
             self.findIndex(t => t.id === phone.id) === index
     );
+
     return phones;
 };
 

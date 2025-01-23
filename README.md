@@ -6,10 +6,14 @@ Este proyecto es una aplicación de catálogo de teléfonos. A continuación, se
 
 Esta aplicación fue desarrollada como parte de una **prueba técnica** para demostrar conocimientos de desarrollo web con **Next.js** y **TypeScript**. A continuación, detallo algunas de las decisiones tomadas durante el desarrollo:
 
+-   **SEO**: Se implementaron prácticas de **Optimización para Motores de Búsqueda (SEO)** para mejorar la visibilidad de la aplicación en los resultados de búsqueda. Esto incluye el uso de etiquetas meta, títulos descriptivos y una estructura de URL amigable.
 -   **Uso de SSR**: Se evitó al máximo el uso del lado del cliente para garantizar que la mayor parte del contenido se genere en el servidor, aprovechando las capacidades de Server-Side Rendering (SSR) que ofrece Next.js.
 -   **Zustand en lugar de Context API**: Para la gestión del estado del carrito, se optó por **Zustand**. Esto evita envolver toda la aplicación con un Context Provider y permite mantener el soporte para SSR.
-
 -   **Pruebas básicas**: Aunque en un proyecto real se habrían implementado pruebas más elaboradas, para esta prueba técnica se desarrollaron pruebas básicas para demostrar las capacidades de testing.
+-   **Uso de TurboPack**: La aplicación utiliza **TurboPack** en lugar de Webpack o SWC, lo que optimiza automáticamente el empaquetado en función del entorno:
+    -   **Modo Desarrollo**: TurboPack prioriza la velocidad y no minimiza ni concatena los assets.
+    -   **Modo Producción**: Los assets se minimizan y concatenan automáticamente para maximizar el rendimiento.
+        Debido a las restricciones de TurboPack, no es posible configurar manualmente los modos de servir los assets. Esto es intencionado para garantizar mayor eficiencia y simplicidad en el flujo de desarrollo.
 
 ## Requisitos
 
@@ -20,7 +24,7 @@ Esta aplicación fue desarrollada como parte de una **prueba técnica** para dem
 
 1. Clona el repositorio:
     ```bash
-    git clone https://github.com/tu-usuario/phone-catalog.git
+    git clone https://github.com/Rubodev-gradhoc/phone-catalog.git
     ```
 2. Navega al directorio del proyecto:
     ```bash
@@ -43,6 +47,10 @@ Antes de iniciar el proyecto, necesitas crear un archivo `.env` en la raíz del 
 NEXT_PUBLIC_API_URL=https://prueba-tecnica-api-tienda-moviles.onrender.com
 NEXT_PUBLIC_API_KEY=87909682e6cd74208f41a6ef39fe4191
 ```
+
+"""
+Ojo! Expongo los datos porque es una API pública de prueba.
+"""
 
 ## Ejecución
 
@@ -77,16 +85,6 @@ yarn build
 ## Despliegue
 
 Para desplegar el proyecto, sigue las instrucciones de tu plataforma de despliegue preferida.
-
-## Contribución
-
-Si deseas contribuir al proyecto, por favor sigue los siguientes pasos:
-
-1. Haz un fork del repositorio.
-2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
-3. Realiza tus cambios y haz commit (`git commit -am 'Añadir nueva funcionalidad'`).
-4. Sube tus cambios (`git push origin feature/nueva-funcionalidad`).
-5. Abre un Pull Request.
 
 ## Estructura del Proyecto
 

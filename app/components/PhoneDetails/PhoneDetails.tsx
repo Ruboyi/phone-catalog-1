@@ -187,7 +187,7 @@ const PhoneDetails: React.FC<PhoneDetailsProps> = ({ phone }) => {
                 >
                     <h2>Specifications</h2>
                     <table>
-                        <tbody>
+                        <tbody className={styles.tbody}>
                             {Object.entries(phone.specs).map(([key, value]) => (
                                 <tr key={key}>
                                     <th

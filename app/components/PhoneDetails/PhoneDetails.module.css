@@ -163,7 +163,7 @@
     border-bottom: 1px solid var(--color-secondary);
 }
 
-tbody :first-child {
+.tbody :first-child {
     border-top: 1px solid var(--color-secondary);
 }
 

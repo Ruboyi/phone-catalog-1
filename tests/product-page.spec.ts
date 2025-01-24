@@ -2,8 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('PhoneDetails Component', () => {
     test.beforeEach(async ({ page }) => {
-        // Navegar a la página donde está el componente PhoneDetails
-        await page.goto('/product/SMG-A25'); // Cambia la URL según tu configuración local
+        await page.goto('/product/SMG-A25');
     });
 
     test('debería mostrar la información básica del teléfono', async ({

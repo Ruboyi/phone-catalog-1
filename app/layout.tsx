@@ -1,28 +1,29 @@
-import type { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 import NavBar from './components/NavBar/NavBar';
-
+import Toast from './components/Toast/Toast';
 import './globals.css';
 
-export const metadata: Metadata = {
-    title: 'Phone Catalog',
-    description: 'Phone catalog made with Next.js',
-};
-
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const locale = await getLocale();
+    const messages = await getMessages();
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html lang={locale} suppressHydrationWarning>
             <head>
                 <link rel="icon" href="/favicon.svg" />
             </head>
             <body>
-                <div className="main-container">
-                    <NavBar />
-                    {children}
-                </div>
+                <NextIntlClientProvider messages={messages}>
+                    <div className="main-container">
+                        <NavBar />
+                        {children}
+                    </div>
+                    <Toast />
+                </NextIntlClientProvider>
             </body>
         </html>
     );

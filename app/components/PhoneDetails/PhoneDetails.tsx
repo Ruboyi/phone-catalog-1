@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Button from '../Button/Button';
+import useToastStore from '@/app/store/useToastStore';
 
 interface PhoneDetailsProps {
     phone: PhoneDetail;
@@ -14,6 +15,7 @@ interface PhoneDetailsProps {
 
 const PhoneDetails: React.FC<PhoneDetailsProps> = ({ phone }) => {
     const router = useRouter();
+    const showToast = useToastStore(state => state.showToast);
     const cart = useCartStore((state: any) => state.cart);
 
     const isInCart = cart.some((item: any) => item.id === phone.id);
@@ -39,11 +41,19 @@ const PhoneDetails: React.FC<PhoneDetailsProps> = ({ phone }) => {
     }) => {
         setSelectedImage(color.imageUrl);
         setSelectedColor(color);
+        if (!selectedSize) {
+            setSelectedSize(phone.storageOptions[0].capacity);
+            setSelectedPrice(phone.storageOptions[0].price);
+        }
     };
 
     const handleSizeClick = (size: string, price: number) => {
         setSelectedSize(size);
         setSelectedPrice(price);
+        if (!selectedColor) {
+            setSelectedImage(phone.colorOptions[0].imageUrl);
+            setSelectedColor(phone.colorOptions[0]);
+        }
     };
 
     const addToCart = useCartStore((state: any) => state.addToCart);
@@ -61,6 +71,10 @@ const PhoneDetails: React.FC<PhoneDetailsProps> = ({ phone }) => {
             color: selectedColor?.hexCode,
             colorName: selectedColor?.name,
             size: selectedSize,
+        });
+
+        showToast('Product added to cart', 'Go to cart', () => {
+            router.push('/cart');
         });
     };
 

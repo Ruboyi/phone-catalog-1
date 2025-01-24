@@ -5,10 +5,13 @@ import CartCard from '../components/CartCard/CartCard';
 import Button from '../components/Button/Button';
 import styles from './Cart.module.css';
 import { useRouter } from 'next/navigation';
+import useToastStore from '../store/useToastStore';
 
 const Cart = () => {
     const router = useRouter();
     const phonesCart = useCartStore((state: any) => state.cart);
+    const clearCart = useCartStore((state: any) => state.clearCart);
+
     const [isSmallScreen, setIsSmallScreen] = useState(false);
 
     const total = phonesCart.reduce((acc, phone) => acc + phone.price, 0);
@@ -30,6 +33,18 @@ const Cart = () => {
         };
     }, []);
 
+    const showToast = useToastStore(state => state.showToast);
+
+    const handleClick = () => {
+        clearCart();
+        showToast(
+            'Su compra se finalizó correctamente',
+            'SEGUIR COMPRANDO',
+            () => {
+                router.push('/');
+            }
+        );
+    };
     return (
         <main className={styles.main}>
             <header>Cart ({phonesCart.length})</header>
@@ -53,7 +68,12 @@ const Cart = () => {
                             >
                                 Continue shopping
                             </Button>
-                            <Button className={styles.payButton}>Pay</Button>
+                            <Button
+                                className={styles.payButton}
+                                onClick={handleClick}
+                            >
+                                Pay
+                            </Button>
                         </div>
                     </>
                 ) : (
@@ -70,7 +90,10 @@ const Cart = () => {
                                 <p className={styles.total}>
                                     Total: {total} EUR
                                 </p>
-                                <Button className={styles.payButton}>
+                                <Button
+                                    className={styles.payButton}
+                                    onClick={handleClick}
+                                >
                                     Pay
                                 </Button>
                             </div>

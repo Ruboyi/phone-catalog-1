@@ -1,6 +1,6 @@
 import type { NextConfig } from 'next';
-
-const isProduction = process.env.NODE_ENV === 'production';
+const createNextIntlPlugin = require('next-intl/plugin');
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 const nextConfig: NextConfig = {
     reactStrictMode: true,
@@ -20,4 +20,4 @@ const nextConfig: NextConfig = {
     },
 };
 
-export default nextConfig;
+module.exports = withNextIntl(nextConfig);

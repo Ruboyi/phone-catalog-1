@@ -3,10 +3,21 @@ import styles from './CartCard.module.css';
 import useCartStore from '@/app/store/cartStore';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import useToastStore from '@/app/store/useToastStore';
 
 const CartCard = ({ phone }) => {
     const deleteCard = useCartStore((state: any) => state.removeFromCart);
+    const addToCart = useCartStore((state: any) => state.addToCart);
+    const showToast = useToastStore((state: any) => state.showToast);
     const t = useTranslations('CartCard');
+
+    const handleRemove = phone => {
+        deleteCard(phone.id);
+
+        showToast(t('toast.productRemoved'), t('toast.deshacer'), () =>
+            addToCart(phone)
+        );
+    };
     return (
         <div
             className={styles.container}
@@ -32,7 +43,7 @@ const CartCard = ({ phone }) => {
                 </p>
                 <button
                     className={styles.removeButton}
-                    onClick={() => deleteCard(phone.id)}
+                    onClick={() => handleRemove(phone)}
                 >
                     {t('removeButton')}
                 </button>

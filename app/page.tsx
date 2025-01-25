@@ -5,9 +5,10 @@ import { getPhones } from './lib/data';
 
 import { Phone } from './lib/definitons';
 import styles from './page.module.css';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 
-export async function generateMetadata({ params: { locale } }) {
+export async function generateMetadata() {
+    const locale = await getLocale();
     const t = await getTranslations({ locale, namespace: 'HomePage' });
 
     return {
@@ -33,8 +34,8 @@ export default async function Home({ searchParams }) {
                         className={styles.phonesContainer}
                         data-testid="phones-container"
                     >
-                        {phones.map((phone: Phone) => (
-                            <PhoneCard key={phone.id} phone={phone} />
+                        {phones.map((phone: Phone, i) => (
+                            <PhoneCard key={`${phone.id + i}`} phone={phone} />
                         ))}
                     </div>
                 ) : null}

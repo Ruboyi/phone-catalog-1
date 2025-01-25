@@ -1,6 +1,10 @@
 .searchBarContainer {
+    position: sticky;
     width: 100%;
     margin-bottom: 20px;
+    top: 104px;
+    z-index: 1000;
+    background-color: white;
 }
 
 .searchInput {

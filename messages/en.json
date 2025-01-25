@@ -2,10 +2,11 @@
     "HomePage": {
         "title": "Hello world!",
         "MetaTitle": "Phone catalog",
-        "MetaDescription": "Phone catalog"
+        "MetaDescription": "Phone catalog with a wide variety of models and brands. Find the phone that best suits your needs."
     },
     "NavBar": {
-        "searchCount": "Results"
+        "searchCount": "Results",
+        "searchPlaceholder": "Search phones ..."
     },
     "PhoneCard": {
         "EUR": "EUR"
@@ -30,13 +31,17 @@
     },
     "CartCard": {
         "removeButton": "Remove",
-        "EUR": "EUR"
+        "EUR": "EUR",
+        "toast": {
+            "productRemoved": "Product removed from cart",
+            "deshacer": "Undo"
+        }
     },
     "ProductPage": {
         "notFound": {
             "title": "Phone Not Found",
             "description": "The phone you are looking for does not exist."
         },
-        "productDescription": "Details and specifications of {{name}}."
+        "productDescription": "Details and specifications of "
     }
 }

@@ -30,7 +30,7 @@ export default function SearchBar({ searchCount }) {
                 onChange={event => handleSearch(event.target.value)}
                 type="search"
                 name="search"
-                placeholder="Search for a smartphone..."
+                placeholder={t('searchPlaceholder')}
                 autoComplete="off"
                 defaultValue={searchParams.get('query')?.toString()}
                 className={styles.searchInput}

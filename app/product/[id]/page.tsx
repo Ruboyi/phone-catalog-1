@@ -1,12 +1,12 @@
 import PhoneDetails from '@/app/components/PhoneDetails/PhoneDetails';
 import { getPhoneById } from '@/app/lib/data';
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }): Promise<Metadata> {
     const id = (await params)?.id.toString();
-    const locale = params.locale;
+    const locale = await getLocale();
     const t = await getTranslations({ locale, namespace: 'ProductPage' });
     const product = await getPhoneById(id);
 
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
     return {
         title: product.name,
-        description: t('productDescription', { name: product.name }),
+        description: t('productDescription') + product.name,
     };
 }
 

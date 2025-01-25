@@ -2,10 +2,11 @@
     "HomePage": {
         "title": "Hola mundo!",
         "MetaTitle": "Catalogo de telefonos",
-        "MetaDescription": "Catalogo de telefonos"
+        "MetaDescription": "Catálogo de teléfonos con una amplia variedad de modelos y marcas. Encuentra el teléfono que mejor se adapte a tus necesidades."
     },
     "NavBar": {
-        "searchCount": "Resultados"
+        "searchCount": "Resultados",
+        "searchPlaceholder": "Buscar teléfonos ..."
     },
     "PhoneCard": {
         "EUR": "EUR"
@@ -29,13 +30,17 @@
     },
     "CartCard": {
         "removeButton": "Eliminar",
-        "EUR": "EUR"
+        "EUR": "EUR",
+        "toast": {
+            "productRemoved": "Producto eliminado del carrito",
+            "deshacer": "Deshacer"
+        }
     },
     "ProductPage": {
         "notFound": {
             "title": "Teléfono no encontrado",
             "description": "El teléfono que buscas no existe."
         },
-        "productDescription": "Detalles y especificaciones de {{name}}."
+        "productDescription": "Detalles y especificaciones de "
     }
 }

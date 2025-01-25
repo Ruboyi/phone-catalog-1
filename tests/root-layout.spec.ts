@@ -14,12 +14,15 @@ test.describe('RootLayout', () => {
     });
 
     test('tiene el título y la descripción correctos', async ({ page }) => {
+        await page.context().setExtraHTTPHeaders({
+            'Accept-Language': 'en',
+        });
         await page.goto('/');
-        await expect(page).toHaveTitle('Phone Catalog');
+        await expect(page).toHaveTitle('Phone catalog');
         const metaDescription = await page.locator('meta[name="description"]');
         await expect(metaDescription).toHaveAttribute(
             'content',
-            'Phone catalog made with Next.js'
+            'Phone catalog with a wide variety of models and brands. Find the phone that best suits your needs.'
         );
     });
 });

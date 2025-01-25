@@ -1,4 +1,5 @@
 'use client';
+
 import useCartStore from '@/app/store/cartStore';
 import PhoneCard from '../PhoneCard/PhoneCard';
 import { PhoneDetail } from '@/app/lib/definitons';
@@ -8,12 +9,14 @@ import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Button from '../Button/Button';
 import useToastStore from '@/app/store/useToastStore';
+import { useTranslations } from 'next-intl';
 
 interface PhoneDetailsProps {
     phone: PhoneDetail;
 }
 
 const PhoneDetails: React.FC<PhoneDetailsProps> = ({ phone }) => {
+    const t = useTranslations('PhoneDetails');
     const router = useRouter();
     const showToast = useToastStore(state => state.showToast);
     const cart = useCartStore((state: any) => state.cart);
@@ -21,13 +24,10 @@ const PhoneDetails: React.FC<PhoneDetailsProps> = ({ phone }) => {
     const isInCart = cart.some((item: any) => item.id === phone.id);
 
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
-
     const [selectedPrice, setSelectedPrice] = useState<number>(
         phone.storageOptions[0].price
     );
-
     const [selectedColor, setSelectedColor] = useState<{
         imageUrl: string;
         hexCode: string;
@@ -73,9 +73,9 @@ const PhoneDetails: React.FC<PhoneDetailsProps> = ({ phone }) => {
             size: selectedSize,
         });
 
-        showToast('Product added to cart', 'Go to cart', () => {
-            router.push('/cart');
-        });
+        showToast(t('toast.productAdded'), t('toast.goToCart'), () =>
+            router.push('/cart')
+        );
     };
 
     const handleGoBack = () => {
@@ -87,9 +87,9 @@ const PhoneDetails: React.FC<PhoneDetailsProps> = ({ phone }) => {
             <button
                 className={styles.backButton}
                 onClick={handleGoBack}
-                aria-label="Go back"
+                aria-label={t('backButton')}
             >
-                {'< BACK'}
+                {t('backButton')}
             </button>
             <main className={styles.container} data-testid="phone-details">
                 <div className={styles.header}>
@@ -118,13 +118,13 @@ const PhoneDetails: React.FC<PhoneDetailsProps> = ({ phone }) => {
                             >
                                 {selectedSize
                                     ? selectedPrice
-                                    : `From ${selectedPrice}`}{' '}
+                                    : `${t('from')} ${selectedPrice}`}{' '}
                                 EUR
                             </p>
                         </div>
 
                         <h3 className={styles.description}>
-                            STORAGE ¿HOW MUCH SPACE DO YOU NEED?
+                            {t('storage.title')}
                         </h3>
                         <div
                             className={styles.storageOptions}
@@ -152,7 +152,7 @@ const PhoneDetails: React.FC<PhoneDetailsProps> = ({ phone }) => {
                         </div>
 
                         <h3 className={styles.description}>
-                            COLOR. PICK YOUR FAVOURITE.
+                            {t('color.title')}
                         </h3>
                         <div
                             className={styles.colorOptions}
@@ -191,7 +191,7 @@ const PhoneDetails: React.FC<PhoneDetailsProps> = ({ phone }) => {
                             className={styles.addToCartButton}
                             data-testid="add-to-cart-button"
                         >
-                            Añadir
+                            {t('addToCart')}
                         </Button>
                     </div>
                 </div>
@@ -199,7 +199,7 @@ const PhoneDetails: React.FC<PhoneDetailsProps> = ({ phone }) => {
                     className={styles.specifications}
                     data-testid="specifications"
                 >
-                    <h2>Specifications</h2>
+                    <h2>{t('specifications')}</h2>
                     <table>
                         <tbody className={styles.tbody}>
                             {Object.entries(phone.specs).map(([key, value]) => (
@@ -225,7 +225,7 @@ const PhoneDetails: React.FC<PhoneDetailsProps> = ({ phone }) => {
                     className={styles.similarItems}
                     data-testid="similar-products"
                 >
-                    <h2>Similar Items</h2>
+                    <h2>{t('similarItems')}</h2>
                     <div className={styles.similarProducts}>
                         {phone.similarProducts.map(product => (
                             <PhoneCard

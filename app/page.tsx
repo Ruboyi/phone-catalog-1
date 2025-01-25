@@ -28,7 +28,6 @@ export default async function Home({ searchParams }) {
         <div className={styles.page}>
             <main className={styles.main}>
                 <SearchBar searchCount={phones.length} />
-                <h1 className={styles.title}>{t('title')}</h1>
                 {phones.length > 0 ? (
                     <div
                         className={styles.phonesContainer}

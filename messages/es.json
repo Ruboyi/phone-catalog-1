@@ -3,5 +3,39 @@
         "title": "Hola mundo!",
         "MetaTitle": "Catalogo de telefonos",
         "MetaDescription": "Catalogo de telefonos"
+    },
+    "NavBar": {
+        "searchCount": "Resultados"
+    },
+    "PhoneCard": {
+        "EUR": "EUR"
+    },
+    "PhoneDetails": {
+        "backButton": "< VOLVER",
+        "toast": {
+            "productAdded": "Producto añadido al carrito",
+            "goToCart": "Ir al carrito"
+        },
+        "from": "Desde",
+        "storage": {
+            "title": "ALMACENAMIENTO. ¿CUÁNTO ESPACIO NECESITAS?"
+        },
+        "color": {
+            "title": "COLOR. ELIGE TU FAVORITO."
+        },
+        "addToCart": "Añadir al carrito",
+        "specifications": "Especificaciones",
+        "similarItems": "Artículos similares"
+    },
+    "CartCard": {
+        "removeButton": "Eliminar",
+        "EUR": "EUR"
+    },
+    "ProductPage": {
+        "notFound": {
+            "title": "Teléfono no encontrado",
+            "description": "El teléfono que buscas no existe."
+        },
+        "productDescription": "Detalles y especificaciones de {{name}}."
     }
 }

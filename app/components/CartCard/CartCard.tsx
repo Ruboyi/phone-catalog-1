@@ -2,10 +2,11 @@ import React from 'react';
 import styles from './CartCard.module.css';
 import useCartStore from '@/app/store/cartStore';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 const CartCard = ({ phone }) => {
     const deleteCard = useCartStore((state: any) => state.removeFromCart);
-
+    const t = useTranslations('CartCard');
     return (
         <div
             className={styles.container}
@@ -26,12 +27,14 @@ const CartCard = ({ phone }) => {
                     {phone.size} | {phone.colorName}
                 </p>
 
-                <p className={styles.price}>{phone.price} EUR</p>
+                <p className={styles.price}>
+                    {phone.price} {t('EUR')}
+                </p>
                 <button
                     className={styles.removeButton}
                     onClick={() => deleteCard(phone.id)}
                 >
-                    Eliminar
+                    {t('removeButton')}
                 </button>
             </div>
         </div>

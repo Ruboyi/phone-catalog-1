@@ -3,5 +3,40 @@
         "title": "Hello world!",
         "MetaTitle": "Phone catalog",
         "MetaDescription": "Phone catalog"
+    },
+    "NavBar": {
+        "searchCount": "Results"
+    },
+    "PhoneCard": {
+        "EUR": "EUR"
+    },
+
+    "PhoneDetails": {
+        "backButton": "< BACK",
+        "toast": {
+            "productAdded": "Product added to cart",
+            "goToCart": "Go to cart"
+        },
+        "from": "From",
+        "storage": {
+            "title": "STORAGE. HOW MUCH SPACE DO YOU NEED?"
+        },
+        "color": {
+            "title": "COLOR. PICK YOUR FAVOURITE."
+        },
+        "addToCart": "Add to cart",
+        "specifications": "Specifications",
+        "similarItems": "Similar Items"
+    },
+    "CartCard": {
+        "removeButton": "Remove",
+        "EUR": "EUR"
+    },
+    "ProductPage": {
+        "notFound": {
+            "title": "Phone Not Found",
+            "description": "The phone you are looking for does not exist."
+        },
+        "productDescription": "Details and specifications of {{name}}."
     }
 }

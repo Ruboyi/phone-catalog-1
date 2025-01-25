@@ -2,12 +2,14 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
-import styles from './SearchBar.module.css'; // Importa el archivo CSS Module
+import styles from './SearchBar.module.css';
+import { useTranslations } from 'next-intl';
 
 const WAIT_BETWEEN_CHANGE = 300;
 
 export default function SearchBar({ searchCount }) {
     const searchParams = useSearchParams();
+    const t = useTranslations('NavBar');
 
     const { replace } = useRouter();
 
@@ -33,7 +35,9 @@ export default function SearchBar({ searchCount }) {
                 defaultValue={searchParams.get('query')?.toString()}
                 className={styles.searchInput}
             />
-            <p className={styles.resultsText}>{searchCount} RESULTS</p>
+            <p className={styles.resultsText}>
+                {searchCount} {t('searchCount').toLowerCase()}
+            </p>
         </div>
     );
 }

@@ -227,9 +227,9 @@ const PhoneDetails: React.FC<PhoneDetailsProps> = ({ phone }) => {
                 >
                     <h2>{t('similarItems')}</h2>
                     <div className={styles.similarProducts}>
-                        {phone.similarProducts.map(product => (
+                        {phone.similarProducts.map((product, i) => (
                             <PhoneCard
-                                key={product.id}
+                                key={product.id + i}
                                 phone={product}
                                 data-testid={`similar-product-${product.id}`}
                             />
